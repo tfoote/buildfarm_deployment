@@ -4,6 +4,8 @@ slave:
   privileged: true
   links:
   - skydock
+  volumes:
+  - slave/mount:/var/lib/docker
 
 master:
   image: master
@@ -14,6 +16,8 @@ master:
   hostname: master
   links:
   - skydock
+  volumes:
+  - jenkins/mount:/var/lib/docker
 
 repo:
 #  build: repo
@@ -24,6 +28,8 @@ repo:
   name: r1
   links:
   - skydock
+  volumes:
+  - repo/mount:/var/lib/docker
 
 # With skydock/skydns hosts are reachable via IMAGENAME.dev.docker host
 # assuming you have setup your DNS for your
